@@ -1,0 +1,14 @@
+/* 화면 하단 행동 버튼 영역 (issue #309). 여백 16 · 20px(그리드 여백) + 하단 안전영역. */
+.bar {
+  display: flex;
+  flex-shrink: 0;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px var(--grid-margin, 20px) calc(16px + env(safe-area-inset-bottom));
+  border-top: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+
+.center {
+  align-items: center;
+}

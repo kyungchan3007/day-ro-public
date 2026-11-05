@@ -1,0 +1,54 @@
+/*
+ * 벤토 격자. 일반 글자 크기의 세로 화면에서는 스크롤 없이 한 화면에 들어오게 한다(issue #332).
+ * 큰 카드가 남은 높이를 받아 늘고 줄어든다. 글자 확대 · 가로 화면처럼 안 들어가면 main 이 위부터 스크롤된다(QA #13).
+ */
+.screen {
+  display: flex;
+  flex-direction: column;
+  padding: 0.75rem 1rem 1rem;
+}
+
+.heading {
+  color: var(--color-text-strong);
+  flex-shrink: 0;
+  font-size: var(--text-hero);
+  font-weight: 800;
+  line-height: 1.25;
+  margin-bottom: 0.75rem;
+  padding-inline: 0.25rem;
+  white-space: pre-line;
+}
+
+/* 큰 카드만 남은 높이를 받는다. 내용보다 작아지지 않고(min-height: auto), 너무 커지지도 않는다. */
+.hero {
+  flex: 1 1 0;
+  max-height: 23rem;
+}
+
+.grid {
+  display: grid;
+  flex-shrink: 0;
+  gap: 0.5rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 0.5rem;
+}
+
+.wide {
+  grid-column: 1 / -1;
+}
+
+@media (min-width: 40rem) {
+  .screen {
+    padding-inline: 1.5rem;
+  }
+}
+
+@media (max-height: 44rem) {
+  .screen {
+    padding-block: 0.5rem;
+  }
+
+  .heading {
+    margin-bottom: 0.5rem;
+  }
+}

@@ -1,0 +1,25 @@
+export const BFF_ENDPOINTS = {
+  health: "/api/health",
+  authAgeCheck: "/api/auth/age-check",
+  authKakaoStart: "/api/auth/kakao/start",
+  authKakaoToken: "/api/auth/kakao/token",
+  authMe: "/api/auth/me",
+  authRefresh: "/api/auth/refresh",
+  authLogout: "/api/auth/logout",
+  authWithdraw: "/api/auth/withdraw",
+  regions: "/api/regions",
+  regionPopularKeywords: "/api/regions/popular-keywords",
+  situations: "/api/situations",
+  courses: "/api/courses",
+  inquiries: "/api/inquiries",
+  placePhoto: "/api/places/photo",
+} as const;
+
+export const SITUATION_RETRY_PATH_TEMPLATE = "/api/situations/:requestId/retry";
+
+export function buildSituationRetryEndpoint(requestId: string) {
+  return `${BFF_ENDPOINTS.situations}/${encodeURIComponent(requestId)}/retry`;
+}
+
+export type BffEndpointKey = keyof typeof BFF_ENDPOINTS;
+export type BffEndpoint = (typeof BFF_ENDPOINTS)[BffEndpointKey];

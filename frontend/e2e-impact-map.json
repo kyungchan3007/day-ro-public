@@ -1,0 +1,111 @@
+{
+  "$schema": "./schemas/e2e-impact-map.schema.json",
+  "serviceRoots": [
+    "frontend/src/",
+    "frontend/public/",
+    "frontend/package.json",
+    "frontend/package-lock.json",
+    "frontend/next.config.ts",
+    "frontend/playwright.config.ts",
+    "frontend/vitest.config.ts",
+    "frontend/e2e-impact-map.json"
+  ],
+  "defaultSpecs": [
+    "src/e2e/**/*.spec.ts"
+  ],
+  "mappings": [
+    {
+      "name": "course-new-situation-flow",
+      "changed": [
+        "frontend/src/app/course/new/",
+        "frontend/src/features/situation/",
+        "frontend/src/widgets/situation/"
+      ],
+      "specs": [
+        "src/e2e/course/course-new.spec.ts"
+      ]
+    },
+    {
+      "name": "course-map-route-guide",
+      "changed": [
+        "frontend/src/features/course-map/",
+        "frontend/src/widgets/course-map/"
+      ],
+      "specs": [
+        "src/e2e/course/course-map-route-guide.spec.ts",
+        "src/e2e/saved/saved-map-sdk-early.spec.ts"
+      ]
+    },
+    {
+      "name": "saved-detail-map-sdk",
+      "changed": [
+        "frontend/src/app/saved/",
+        "frontend/src/widgets/saved/",
+        "frontend/src/e2e/support/"
+      ],
+      "specs": [
+        "src/e2e/saved/saved-map-sdk-early.spec.ts",
+        "src/e2e/saved/saved.spec.ts"
+      ]
+    },
+    {
+      "name": "home",
+      "changed": [
+        "frontend/src/app/page.tsx",
+        "frontend/src/features/home/",
+        "frontend/src/widgets/home/",
+        "frontend/src/shared/static/home/"
+      ],
+      "specs": [
+        "src/e2e/home/home.spec.ts"
+      ]
+    },
+    {
+      "name": "auth-profile-menu",
+      "changed": [
+        "frontend/src/app/login/",
+        "frontend/src/app/mypage/",
+        "frontend/src/features/auth/",
+        "frontend/src/features/profile/",
+        "frontend/src/widgets/auth/",
+        "frontend/src/widgets/profile/",
+        "frontend/src/shared/static/auth/",
+        "frontend/src/shared/static/profile/",
+        "frontend/src/shared/ui/auth/",
+        "frontend/src/shared/ui/menu/",
+        "frontend/src/shared/ui/layout/SideMenu.tsx"
+      ],
+      "specs": [
+        "src/e2e/auth/auth-profile.spec.ts"
+      ]
+    },
+    {
+      "name": "situation-bff-device-id",
+      "changed": [
+        "frontend/src/app/api/situations/",
+        "frontend/src/shared/api/server-device-id.ts",
+        "frontend/src/shared/api/server-situation-backend-client.ts"
+      ],
+      "specs": [
+        "src/e2e/course/course-retry-quota-device.spec.ts",
+        "src/e2e/course/course-retry-failure.spec.ts",
+        "src/e2e/course/course-rate-limit.spec.ts",
+        "src/e2e/course/course-generate-quota-device.spec.ts"
+      ]
+    },
+    {
+      "name": "e2e-course-flow-helper",
+      "changed": [
+        "frontend/src/e2e/support/course-flow.ts"
+      ],
+      "specs": [
+        "src/e2e/course/course-rate-limit.spec.ts",
+        "src/e2e/course/course-min-one-place.spec.ts",
+        "src/e2e/course/course-place-count.spec.ts",
+        "src/e2e/course/course-retry-quota-device.spec.ts",
+        "src/e2e/course/course-retry-failure.spec.ts",
+        "src/e2e/course/course-generate-quota-device.spec.ts"
+      ]
+    }
+  ]
+}
