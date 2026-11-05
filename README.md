@@ -21,7 +21,7 @@ Google Places로 주변 장소 후보를 모으고 Gemini가 상황에 맞게 �
 ![Spring AI](https://img.shields.io/badge/Spring_AI-Gemini-4285F4?logo=googlegemini&logoColor=white)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-pgvector-4169E1?logo=postgresql&logoColor=white)
 ![Redis](https://img.shields.io/badge/Redis-DC382D?logo=redis&logoColor=white)
-![Status](https://img.shields.io/badge/status-운영_중_1.0.0--rc.6-2EA44F)
+![Status](https://img.shields.io/badge/status-베타_테스트_중_1.0.0--rc.6-F59E0B)
 
 <br><br>
 
@@ -45,7 +45,7 @@ Google Places로 주변 장소 후보를 모으고 Gemini가 상황에 맞게 �
 
 <sup>업데이트: **2026-11-05**</sup>
 
-> **운영 중** — [day-ro.com](https://day-ro.com)에서 `상황 입력 → AI 코스 생성 · 재추천 → 지도 · 길찾기 → 저장 · 공유` 전 구간 동작
+> **베타 테스트 중** — [day-ro.com](https://day-ro.com)에서 `상황 입력 → AI 코스 생성 · 재추천 → 지도 · 길찾기 → 저장 · 공유` 전 구간 동작
 
 | 영역 | 내용 |
 | --- | --- |
