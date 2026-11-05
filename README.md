@@ -8,7 +8,7 @@ Google Places로 주변 장소 후보를 모으고 Gemini가 상황에 맞게 �
 
 <br>
 
-[🌐 day-ro.com](https://day-ro.com)
+[🌐 day-ro.com](https://day-ro.com) · [📷 Instagram @dayro_app](https://www.instagram.com/dayro_app/)
 
 <br>
 
