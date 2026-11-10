@@ -1,0 +1,101 @@
+{
+  "$comment": "web UI 소유권 · 검사 예외 원본 (issue #381). 런타임 코드는 import 하지 않고 tooling/ui-guard · eslint 설정만 읽는다. 경로는 src 기준.",
+  "tokenGuard": {
+    "allowlist": {
+      "app/globals.css": {
+        "reason": "web 토큰 정의 원본"
+      },
+      "app/ui-preview/colors/page.tsx": {
+        "reason": "토큰 값 확인용 견본 페이지(hex 라벨 표시)"
+      },
+      "features/auth/ui/KakaoLoginButton.tsx": {
+        "reason": "카카오 디자인 가이드 고정 색(#FEE500 · 검정 85%) — 데이로 토큰에 넣지 않는다",
+        "rules": [
+          "raw-hex-color",
+          "raw-rgb-color"
+        ]
+      },
+      "features/course-map/hooks/useKakaoMap.ts": {
+        "reason": "지도 경로선은 SDK 가 SVG 속성으로 그려 CSS 변수를 못 읽고, 마커 zIndex 는 SDK 옵션(숫자)이다",
+        "rules": [
+          "raw-hex-color",
+          "raw-inline-style"
+        ]
+      },
+      "groups/course/tokens.css": {
+        "reason": "코스 묶음 토큰 정의 원본"
+      },
+      "groups/entry/tokens.css": {
+        "reason": "진입 묶음 토큰 정의 원본"
+      },
+      "features/course-map/css/tokens.css": {
+        "reason": "코스 지도 슬라이스 토큰 정의 원본"
+      },
+      "features/situation/css/tokens.css": {
+        "reason": "상황 입력 슬라이스 토큰 정의 원본"
+      },
+      "features/onboarding/css/tokens.css": {
+        "reason": "온보딩 슬라이스 토큰 정의 원본"
+      },
+      "widgets/home/css/tokens.css": {
+        "reason": "홈 슬라이스 토큰 정의 원본"
+      }
+    }
+  },
+  "externalVariables": {
+    "--font-geist-sans": "next/font(Geist) 가 layout 의 className 으로 넣는 변수 — CSS 원본에 정의가 없다"
+  },
+  "routeGroups": {
+    "entry": [
+      "features/home",
+      "features/onboarding",
+      "widgets/home",
+      "widgets/onboarding"
+    ],
+    "course": [
+      "features/situation",
+      "features/loading-quiz",
+      "features/course-result",
+      "features/course-map",
+      "features/saved",
+      "widgets/situation",
+      "widgets/course-preview",
+      "widgets/course-result",
+      "widgets/course-map",
+      "widgets/saved"
+    ],
+    "account": [
+      "features/profile",
+      "widgets/profile",
+      "widgets/auth/WithdrawScreen.tsx"
+    ],
+    "support": [
+      "features/faq",
+      "widgets/faq"
+    ],
+    "legal": [
+      "widgets/legal"
+    ]
+  },
+  "unownedSlices": [
+    "features/auth",
+    "widgets/auth"
+  ],
+  "docs": [
+    {
+      "path": "app/ui-preview/**",
+      "allow": "web 전체 토큰",
+      "reason": "모든 층을 한 화면에 모아 보는 통합 견본 — 런타임 화면이 아니다"
+    },
+    {
+      "path": "shared/ui/stories/foundations/**",
+      "allow": "web 전체 토큰",
+      "reason": "토큰 값 문서(스토리북 Foundations)"
+    },
+    {
+      "path": "shared/ui/tokens/token-catalog.ts",
+      "allow": "web 전체 토큰",
+      "reason": "스토리북 Foundations 가 읽는 토큰 목록 데이터"
+    }
+  ]
+}

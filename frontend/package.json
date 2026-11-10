@@ -1,0 +1,31 @@
+{
+  "name": "dayro-frontend-monorepo",
+  "private": true,
+  "packageManager": "user@example.invalid",
+  "workspaces": [
+    "apps/*",
+    "packages/*",
+    "tooling/*"
+  ],
+  "scripts": {
+    "prepare": "git config core.hooksPath frontend/.githooks || true",
+    "dev": "npm run dev -w dayro-frontend",
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "typecheck": "turbo run typecheck",
+    "test:unit": "turbo run test:unit",
+    "cf:build": "npm run cf:build -w dayro-frontend",
+    "cf:deploy": "npm run cf:deploy -w dayro-frontend",
+    "cf:smoke": "npm run cf:smoke -w dayro-frontend",
+    "onto:check": "npm run onto:check -w dayro-frontend",
+    "check:ui": "npm run test:unit -w @dayro/ui-guard",
+    "check:boundaries": "npm run check:boundaries -w @dayro/ui-guard",
+    "changeset": "changeset",
+    "version-packages": "changeset version && npm install --package-lock-only --ignore-scripts"
+  },
+  "devDependencies": {
+    "@changesets/changelog-github": "1.0.1",
+    "@changesets/cli": "3.0.3",
+    "turbo": "2.11.10"
+  }
+}

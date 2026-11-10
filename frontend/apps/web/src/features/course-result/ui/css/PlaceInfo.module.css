@@ -1,0 +1,91 @@
+/* 선택 화면 장소 정보 (issue #365). 확정 화면 드롭다운 사진 비율 · 기본 이미지와 맞춘다. */
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.photo {
+  aspect-ratio: 16 / 9;
+  background: var(--color-surface-subtle);
+  border-radius: var(--radius-lg);
+  display: block;
+  height: auto;
+  object-fit: cover;
+  width: 100%;
+}
+
+.photoEmpty {
+  align-items: center;
+  color: var(--color-text-muted);
+  display: flex;
+  font-size: var(--text-label);
+  justify-content: center;
+}
+
+.summary {
+  align-items: center;
+  color: var(--color-text-secondary);
+  display: flex;
+  flex-wrap: wrap;
+  font-size: var(--text-label);
+  gap: 0.25rem 0.75rem;
+  justify-content: space-between;
+}
+
+.rating {
+  align-items: center;
+  color: var(--color-text-strong);
+  display: inline-flex;
+  font-weight: 600;
+  gap: 0.25rem;
+}
+
+.star {
+  color: var(--color-orange-400);
+  display: inline-flex;
+}
+
+.rows {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  border-top: 1px solid var(--color-border);
+  display: grid;
+  font-size: var(--text-control);
+  gap: 0.75rem;
+  grid-template-columns: 4.5rem minmax(0, 1fr);
+  line-height: 1.45;
+  padding-block: 0.5rem;
+}
+
+.row dt {
+  color: var(--color-text-tertiary);
+}
+
+.row dd {
+  color: var(--color-text-strong);
+  overflow-wrap: anywhere;
+  white-space: pre-line;
+}
+
+.muted {
+  color: var(--color-text-muted) !important;
+}
+
+/* 마우스 미리보기: 사진 높이를 줄이고 글자를 작게. */
+.compact {
+  gap: 0.5rem;
+}
+
+.compact .photo {
+  aspect-ratio: 2 / 1;
+}
+
+.compact .row {
+  font-size: var(--text-label);
+  grid-template-columns: 3.5rem minmax(0, 1fr);
+  padding-block: 0.375rem;
+}

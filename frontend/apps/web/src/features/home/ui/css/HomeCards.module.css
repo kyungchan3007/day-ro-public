@@ -1,0 +1,309 @@
+.tile {
+  border-radius: var(--radius-sheet);
+  box-sizing: border-box;
+  min-width: 0;
+  overflow-wrap: anywhere; /* keep-all 이어도 글자를 크게 키워 안 들어가면 줄을 바꾼다. */
+  padding: 1.125rem;
+}
+
+a.tile {
+  transition: transform var(--duration-press) ease;
+}
+
+a.tile:active {
+  transform: scale(0.98);
+}
+
+a.tile:focus-visible,
+.chip:focus-visible {
+  outline: 2px solid var(--color-primary-400);
+  outline-offset: 2px;
+}
+
+.create {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-gradient-end));
+  color: var(--color-on-primary);
+  display: flex;
+  flex-direction: column;
+  /* hidden 은 flex 최소 높이(내용 크기)를 없애 큰 카드가 납작해진다. */
+  overflow: clip;
+  position: relative;
+}
+
+.createTitle,
+.createSubtitle,
+.createFoot {
+  position: relative;
+}
+
+.createTitle {
+  font-size: var(--text-headline);
+  font-weight: 800;
+  line-height: 1.3;
+  white-space: pre-line;
+}
+
+.createSubtitle {
+  color: var(--color-primary-100);
+  font-size: var(--text-control);
+  margin-top: 0.375rem;
+}
+
+/* 남은 높이를 차지한다. 그림은 버튼 옆 폭 · 이 높이 안에서 줄어들어 버튼과 겹치지 않는다. */
+.createFoot {
+  align-items: flex-end;
+  display: flex;
+  flex: 1 1 0;
+  margin-top: 0.5rem;
+  min-height: 2.75rem;
+}
+
+.createCta {
+  align-items: center;
+  background: var(--color-surface);
+  border-radius: var(--radius-pill);
+  color: var(--color-primary-deep);
+  display: inline-flex;
+  font-size: var(--text-body);
+  font-weight: 700;
+  gap: 0.375rem;
+  max-width: 100%;
+  min-height: 2.75rem;
+  padding: 0 1.125rem;
+  position: relative;
+}
+
+.createImage {
+  bottom: 0;
+  height: 100%;
+  object-fit: contain;
+  object-position: right bottom;
+  position: absolute;
+  right: 0;
+  width: max(0rem, calc(100% - 8.75rem));
+  /* 큰 카드가 길어져도 원본(252×260)보다 키우지 않는다 — 흐려짐 방지(issue #378). 글자 확대와 무관하게 px */
+  max-height: 260px;
+}
+
+.small {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  justify-content: space-between;
+  min-height: 7.5rem;
+  padding: 0.875rem;
+}
+
+.smallCopy {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.smallTitle {
+  font-size: var(--text-title-sm);
+  font-weight: 700;
+  word-break: keep-all;
+}
+
+.saved {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-strong);
+}
+
+.savedImage {
+  align-self: flex-start;
+  height: 3rem;
+  object-fit: contain;
+  width: 3.5rem;
+}
+
+.savedSubtitle {
+  color: var(--color-text-tertiary);
+  font-size: var(--text-label);
+}
+
+.serviceArea {
+  background: var(--color-primary-900);
+  color: var(--color-on-primary);
+}
+
+.serviceAreaImage {
+  align-self: flex-end;
+  height: 3rem;
+  object-fit: contain;
+  width: auto;
+}
+
+.serviceAreaSubtitle {
+  color: var(--color-primary-300);
+  font-size: var(--text-label);
+}
+
+.popular {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-strong);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.875rem;
+}
+
+.popularHeading {
+  font-size: var(--text-title-sm);
+  font-weight: 700;
+}
+
+/* 칩이 많아도 높이가 늘지 않게 한 줄로 두고 옆으로 넘긴다. */
+.chips {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.chips::-webkit-scrollbar {
+  display: none;
+}
+
+.chips > li {
+  flex-shrink: 0;
+}
+
+.chip {
+  align-items: center;
+  background: var(--color-primary-tint);
+  border-radius: var(--radius-lg);
+  color: var(--color-primary-deep);
+  display: inline-flex;
+  font-size: var(--text-control);
+  font-weight: 600;
+  min-height: 2.75rem;
+  padding: 0 0.875rem;
+}
+
+.chipSkeleton {
+  background: var(--color-surface-chip);
+  border-radius: var(--radius-lg);
+  display: block;
+  height: 2.75rem;
+  width: 5.25rem;
+}
+
+.purpose {
+  align-items: center;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-strong);
+  display: flex;
+  flex-wrap: wrap; /* 글자를 크게 키우면 글이 아이콘 아래로 내려간다. */
+  gap: 0.625rem;
+  min-height: 3.75rem;
+  padding: 0.5rem 0.75rem;
+}
+
+.purposeIcon {
+  align-items: center;
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-shrink: 0;
+  height: 2.375rem;
+  justify-content: center;
+  width: 2.375rem;
+}
+
+.warm {
+  background: var(--color-orange-100);
+  color: var(--color-orange-600);
+}
+
+.cool {
+  background: var(--color-teal-100);
+  color: var(--color-teal-600);
+}
+
+.purposeCopy {
+  display: flex;
+  flex: 1 1 4rem;
+  flex-direction: column;
+  gap: 0.125rem;
+  min-width: 0;
+}
+
+.purposeTitle {
+  font-size: var(--text-body-lg);
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.purposeSubtitle {
+  color: var(--color-text-tertiary);
+  font-size: var(--text-label);
+  line-height: 1.3;
+  word-break: keep-all;
+}
+
+/* 낮은 화면: 작은 카드를 한 줄로 줄여 스크롤 없이 들어오게 한다. */
+@media (max-height: 44rem) {
+  .small {
+    align-items: center;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    min-height: 4.25rem;
+    padding: 0.5rem 0.75rem;
+  }
+
+  .saved {
+    flex-direction: row-reverse;
+  }
+
+  .savedImage,
+  .serviceAreaImage {
+    align-self: center;
+    flex-shrink: 0;
+    height: 2.25rem;
+    width: 2.5rem;
+  }
+
+  .savedSubtitle,
+  .serviceAreaSubtitle {
+    display: none;
+  }
+
+  .smallTitle {
+    font-size: var(--text-body);
+  }
+
+  .purpose {
+    min-height: 3.25rem;
+    padding-block: 0.25rem;
+  }
+
+  .purposeIcon {
+    height: 2.25rem;
+    width: 2.25rem;
+  }
+
+  .purposeSubtitle {
+    display: none;
+  }
+}
+
+/* 아주 낮은 화면(320x568 등): 많이 찾는 동네는 코스 만들기 지역 단계에서 볼 수 있어 뺀다. */
+@media (max-height: 37rem) {
+  .popular {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  a.tile {
+    transition: none;
+  }
+
+  a.tile:active {
+    transform: none;
+  }
+}

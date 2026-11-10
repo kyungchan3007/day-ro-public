@@ -1,0 +1,8 @@
+/* 상황 입력 슬라이스 토큰 (issue #381). app/globals.css 만 import 한다. */
+@theme {
+  --color-purpose-date: #d4537e; /* pink */
+  --color-purpose-blind: #378add; /* blue */
+  --color-purpose-friends: #ef9f27; /* amber */
+  --color-purpose-anniversary: #d85a30; /* coral */
+  --shadow-control: 0 1px 4px rgb(0 0 0 / 0.08); /* 회색 박스 위 흰 원형 버튼 (장소 수 스테퍼) */
+}

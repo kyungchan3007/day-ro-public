@@ -1,0 +1,21 @@
+{
+  "$schema": "https://example.invalid",
+  "ui": "stream",
+  "globalEnv": ["NODE_ENV"],
+  "tasks": {
+    "build": {
+      "env": ["NEXT_PUBLIC_*", "CSP_REPORT_URI", "PERF_SOURCEMAPS"],
+      "inputs": ["$TURBO_DEFAULT$", ".env*", "$TURBO_ROOT$/packages/ui/**", "!$TURBO_ROOT$/packages/ui/node_modules/**"],
+      "outputs": [".next/**", "!.next/cache/**"]
+    },
+    "lint": {
+      "inputs": ["$TURBO_DEFAULT$", "$TURBO_ROOT$/packages/ui/**", "!$TURBO_ROOT$/packages/ui/node_modules/**"]
+    },
+    "typecheck": {
+      "inputs": ["$TURBO_DEFAULT$", "$TURBO_ROOT$/packages/ui/**", "!$TURBO_ROOT$/packages/ui/node_modules/**"]
+    },
+    "test:unit": {
+      "cache": false
+    }
+  }
+}

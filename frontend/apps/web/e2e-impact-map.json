@@ -1,0 +1,113 @@
+{
+  "$schema": "./schemas/e2e-impact-map.schema.json",
+  "serviceRoots": [
+    "frontend/apps/web/src/",
+    "frontend/apps/web/public/",
+    "frontend/apps/web/package.json",
+    "frontend/package.json",
+    "frontend/package-lock.json",
+    "frontend/turbo.json",
+    "frontend/apps/web/next.config.ts",
+    "frontend/apps/web/playwright.config.ts",
+    "frontend/apps/web/vitest.config.ts",
+    "frontend/apps/web/e2e-impact-map.json"
+  ],
+  "defaultSpecs": [
+    "src/e2e/**/*.spec.ts"
+  ],
+  "mappings": [
+    {
+      "name": "course-new-situation-flow",
+      "changed": [
+        "frontend/apps/web/src/app/course/new/",
+        "frontend/apps/web/src/features/situation/",
+        "frontend/apps/web/src/widgets/situation/"
+      ],
+      "specs": [
+        "src/e2e/course/course-new.spec.ts"
+      ]
+    },
+    {
+      "name": "course-map-route-guide",
+      "changed": [
+        "frontend/apps/web/src/features/course-map/",
+        "frontend/apps/web/src/widgets/course-map/"
+      ],
+      "specs": [
+        "src/e2e/course/course-map-route-guide.spec.ts",
+        "src/e2e/saved/saved-map-sdk-early.spec.ts"
+      ]
+    },
+    {
+      "name": "saved-detail-map-sdk",
+      "changed": [
+        "frontend/apps/web/src/app/saved/",
+        "frontend/apps/web/src/widgets/saved/",
+        "frontend/apps/web/src/e2e/support/"
+      ],
+      "specs": [
+        "src/e2e/saved/saved-map-sdk-early.spec.ts",
+        "src/e2e/saved/saved.spec.ts"
+      ]
+    },
+    {
+      "name": "home",
+      "changed": [
+        "frontend/apps/web/src/app/page.tsx",
+        "frontend/apps/web/src/features/home/",
+        "frontend/apps/web/src/widgets/home/",
+        "frontend/apps/web/src/shared/static/home/"
+      ],
+      "specs": [
+        "src/e2e/home/home.spec.ts"
+      ]
+    },
+    {
+      "name": "auth-profile-menu",
+      "changed": [
+        "frontend/apps/web/src/app/login/",
+        "frontend/apps/web/src/app/mypage/",
+        "frontend/apps/web/src/features/auth/",
+        "frontend/apps/web/src/features/profile/",
+        "frontend/apps/web/src/widgets/auth/",
+        "frontend/apps/web/src/widgets/profile/",
+        "frontend/apps/web/src/shared/static/auth/",
+        "frontend/apps/web/src/shared/static/profile/",
+        "frontend/apps/web/src/shared/ui/auth/",
+        "frontend/apps/web/src/shared/ui/menu/",
+        "frontend/apps/web/src/shared/ui/layout/SideMenu.tsx"
+      ],
+      "specs": [
+        "src/e2e/auth/auth-profile.spec.ts"
+      ]
+    },
+    {
+      "name": "situation-bff-device-id",
+      "changed": [
+        "frontend/apps/web/src/app/api/situations/",
+        "frontend/apps/web/src/shared/api/server-device-id.ts",
+        "frontend/apps/web/src/shared/api/server-situation-backend-client.ts"
+      ],
+      "specs": [
+        "src/e2e/course/course-retry-quota-device.spec.ts",
+        "src/e2e/course/course-retry-failure.spec.ts",
+        "src/e2e/course/course-rate-limit.spec.ts",
+        "src/e2e/course/course-generate-quota-device.spec.ts"
+      ]
+    },
+    {
+      "name": "e2e-course-flow-helper",
+      "changed": [
+        "frontend/apps/web/src/e2e/support/course-flow.ts"
+      ],
+      "specs": [
+        "src/e2e/course/course-rate-limit.spec.ts",
+        "src/e2e/course/course-min-one-place.spec.ts",
+        "src/e2e/course/course-place-count.spec.ts",
+        "src/e2e/course/course-retry-quota-device.spec.ts",
+        "src/e2e/course/course-retry-failure.spec.ts",
+        "src/e2e/course/course-generate-quota-device.spec.ts"
+      ]
+    }
+  ]
+}

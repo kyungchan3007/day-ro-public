@@ -1,0 +1,111 @@
+.screen {
+  min-height: 0;
+}
+
+.headerCopy {
+  margin-top: 0.25rem;
+}
+
+.helperText {
+  margin-top: 0.25rem;
+}
+
+.rerollWrap {
+  margin-top: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+/* 남은 횟수: 버튼처럼 보이지 않도록 배경 없는 글자, 숫자만 보라로 강조 (QA #10, issue #206). */
+.retryCount {
+  font-size: var(--text-label);
+  font-weight: 500;
+  color: var(--color-text-muted);
+}
+
+.retryCountNumber {
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.orderStrip {
+  margin-top: 0.75rem;
+}
+
+.cardGrid {
+  margin-top: 0.75rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-content: start;
+  gap: 0.625rem;
+  padding-bottom: 0.25rem;
+}
+
+@media (min-width: 640px) {
+  .headerCopy {
+    margin-top: 0.25rem;
+  }
+
+  .helperText {
+    margin-top: 0.375rem;
+  }
+
+  .rerollWrap,
+  .orderStrip,
+  .cardGrid {
+    margin-top: 1rem;
+  }
+
+  .cardGrid {
+    gap: 0.75rem;
+  }
+}
+
+/* 마우스 미리보기(issue #365): 카드 칸 안에서 아래로 겹쳐 띄운다. 마우스를 미리보기로 옮겨도 칸을 벗어나지 않아 유지된다. */
+.cardCell {
+  position: relative;
+}
+
+.preview {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-popover);
+  left: 0;
+  padding: 0.75rem;
+  position: absolute;
+  top: calc(100% + 0.375rem);
+  width: min(17rem, 85vw);
+  z-index: var(--z-raised);
+}
+
+/* 카드와 미리보기 사이 틈을 투명하게 이어, 마우스가 틈을 지나도 닫히지 않게 한다. */
+.preview::before {
+  content: "";
+  /* 위치 기준은 테두리 안쪽이라 테두리 두께(1px)만큼 더 올린다. */
+  height: calc(0.375rem + 1px);
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: calc(-0.375rem - 1px);
+}
+
+.previewEnd {
+  left: auto;
+  right: 0;
+}
+
+.previewTitle {
+  color: var(--color-text-strong);
+  font-size: var(--text-control);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+@media (hover: none) {
+  .preview {
+    display: none;
+  }
+}

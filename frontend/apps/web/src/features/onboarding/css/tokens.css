@@ -1,0 +1,14 @@
+/* 온보딩 슬라이스 토큰 (issue #381). app/globals.css 만 import 한다. */
+@theme {
+  --color-surface-muted: #f9f9fb; /* 온보딩 그림 카드 바탕 · 보조 버튼 누름 */
+  --color-border-soft: #efeff3; /* 그림 카드 안 흰 카드 테두리 */
+  --color-indicator-idle: #e0e0e6; /* 진행 점(현재 아님) */
+  --radius-tile: 16px; /* 온보딩 장소 카드 */
+  --shadow-brand: 0 10px 24px rgba(120, 0, 233, 0.28); /* 브랜드 그라데이션 강조 칸 */
+}
+
+:root {
+  --duration-slide: 0.4s; /* 온보딩 장 넘김 */
+  --ease-slide: cubic-bezier(0.2, 0.8, 0.2, 1); /* 온보딩 장 넘김 */
+  --duration-rise: 0.6s; /* 시작 화면 등장 */
+}

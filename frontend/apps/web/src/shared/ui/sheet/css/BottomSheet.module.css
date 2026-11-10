@@ -1,0 +1,4 @@
+/* web 앱 폭(L2). 시트 동작 · 모양은 @dayro/ui BottomSheet (issue #381). */
+.panel {
+  max-width: var(--container-app); /* app-shell 컬럼 폭과 정렬. */
+}

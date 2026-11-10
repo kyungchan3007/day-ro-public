@@ -1,0 +1,4 @@
+/* 실패 fixture: 다른 앱 CSS · 비공개 경로 */
+@import "../../../admin/src/app/globals.css";
+@reference "@dayro/ui/src/styles/theme.css";
+@import "@dayro/ui/theme.css";

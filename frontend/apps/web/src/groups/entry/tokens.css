@@ -1,0 +1,5 @@
+/* 진입 묶음 토큰 (L3, issue #381) — 홈 · 온보딩이 함께 쓰는 값. app/globals.css 만 import 한다. */
+@theme {
+  --color-primary-gradient-end: #4b4ee0; /* 브랜드 그라데이션 끝색 (primary → 이 색) */
+  --color-surface-chip: #f0f0f5; /* 회색 보조 버튼(온보딩 이전) */
+}

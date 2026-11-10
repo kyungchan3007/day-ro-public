@@ -1,0 +1,10 @@
+/* 코스 묶음 토큰 (L3, issue #381) — 이동수단 표현. app/globals.css 만 import 한다. */
+@theme {
+  --color-transport-start: var(--color-primary-700);
+  --color-transport-walk: var(--color-primary-600);
+  --color-transport-subway: var(--color-success); /* type3(green) */
+  --color-transport-subway-alt: var(--color-teal-500); /* type2(teal) */
+  --color-transport-bus: var(--color-orange-400);
+  --color-transport-car: #2699ec; /* NOTE: 공식 팔레트 외 값(SVG 뱃지 전용). 확정 필요 */
+  --color-transport-arrive: var(--color-primary-800);
+}

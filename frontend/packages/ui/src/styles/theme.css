@@ -1,0 +1,152 @@
+/*
+ * 데이로 범용 디자인 토큰 — L1 (@dayro/ui, issue #381)
+ * 두 앱(web · admin)이 같은 값으로 쓰는 브랜드 토큰만 둔다.
+ * 출처: Figma 컬러 시스템 보드(figma_htmlgenerator export) 픽셀 추출값 + 컴포넌트 시트(node 77:8713).
+ *
+ * 넣지 않는 것(경계 — tooling/ui-guard 가 검사):
+ *   - 앱 화면 틀 · 앱 폭(--container-app · --color-frame) → 앱 globals.css (L2)
+ *   - 라우트 묶음 · 슬라이스만 쓰는 값(이동수단 · 목적 팔레트 · 온보딩 모션 등) → 묶음/슬라이스 tokens.css
+ *   - body · 폰트 · 전역 규칙 → 앱 globals.css
+ * 이 파일의 토큰은 이 파일 안 토큰만 참조한다.
+ *
+ * 앱에서 쓰는 법(globals.css):
+ *   @import "tailwindcss";
+ *   @import "@dayro/ui/theme.css";
+ *   @source "<패키지 src 상대경로>";
+ */
+@theme {
+  /* ── Palette: Primary (브랜드 보라) 100~1000 ───────────────────── */
+  --color-primary-100: #faf5ff;
+  --color-primary-200: #f4eafd;
+  --color-primary-300: #ddc2f5;
+  --color-primary-400: #cba4ef;
+  --color-primary-500: #b37de6;
+  --color-primary-600: #954ed8;
+  --color-primary-700: #7800e9; /* Base */
+  --color-primary-800: #3e0078;
+  --color-primary-900: #250048;
+  --color-primary-1000: #130026;
+
+  /* ── Palette: Neutral 50~950 ──────────────────────────────────── */
+  --color-neutral-50: #f6f6f6;
+  --color-neutral-100: #f0f0f0;
+  --color-neutral-200: #e5e5e5;
+  --color-neutral-300: #c9c9c9;
+  --color-neutral-400: #a8a8a8;
+  --color-neutral-500: #8f8f8f;
+  --color-neutral-600: #797979;
+  --color-neutral-700: #5b5b5b;
+  --color-neutral-800: #383838;
+  --color-neutral-900: #1e1e1e;
+  --color-neutral-950: #111111;
+
+  /* ── Palette: Secondary Orange 100~600 ────────────────────────── */
+  --color-orange-100: #ffefe4;
+  --color-orange-200: #ffd5b4;
+  --color-orange-300: #ffaa57;
+  --color-orange-400: #ea8c30;
+  --color-orange-500: #ff6a04;
+  --color-orange-600: #c74c00;
+
+  /* ── Palette: Secondary Teal 100~600 ──────────────────────────── */
+  --color-teal-100: #e9fdfb;
+  --color-teal-200: #befaf5;
+  --color-teal-300: #6dede2;
+  --color-teal-400: #08ead8;
+  --color-teal-500: #00b2a4;
+  --color-teal-600: #00978b;
+
+  /* ── Semantic: Brand ──────────────────────────────────────────── */
+  --color-primary: var(--color-primary-700);
+  --color-primary-weak: var(--color-primary-600);
+  --color-primary-pressed: var(--color-primary-800);
+  --color-primary-surface: var(--color-primary-100);
+  --color-on-primary: #ffffff; /* 채운 배경(primary · 진한 면) 위 글자 · 아이콘 */
+  --color-primary-tint: #f7f0fe; /* 연보라 칩 바탕 */
+  --color-primary-deep: #5202b2; /* 연보라 칩 글자 */
+
+  /* ── Semantic: Status ─────────────────────────────────────────── */
+  --color-success: #00b52d;
+  --color-danger: #e5484d; /* 검증/에러 문구 */
+  --color-danger-surface: oklch(97.1% 0.013 17.38); /* 에러 박스 배경 */
+  --color-danger-border: oklch(88.5% 0.062 18.334); /* 에러 박스 테두리 */
+  --color-danger-strong: oklch(50.5% 0.213 27.518); /* 에러 박스 글자 */
+
+  /* ── Semantic: Text ───────────────────────────────────────────── */
+  --color-text-strong: var(--color-neutral-950); /* Title/Body */
+  --color-text: var(--color-neutral-900);
+  --color-text-secondary: var(--color-neutral-800); /* SubTitle */
+  --color-text-tertiary: var(--color-neutral-700);
+  --color-text-muted: var(--color-neutral-600);
+  --color-text-disabled: var(--color-neutral-400); /* Disabled */
+
+  /* ── Semantic: Surface & Border ───────────────────────────────── */
+  --color-surface: #ffffff;
+  --color-surface-subtle: var(--color-neutral-50);
+  --color-border: var(--color-neutral-200);
+  --color-border-strong: var(--color-neutral-300);
+
+  /* ── Semantic: Feedback (toast · 오버레이) ────────────────────── */
+  --color-toast-bg: var(--color-neutral-900);
+  --color-overlay: rgb(0 0 0 / 0.45); /* 바텀시트 · 사이드메뉴 뒤 딤 */
+  --color-overlay-strong: rgb(0 0 0 / 0.5); /* 확인 모달 뒤 딤 */
+
+  /* ── Radius ───────────────────────────────────────────────────── */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+  --radius-pill: 999px;
+  --radius-base: 8px; /* 목록 행 · 사진 · 입력칸 */
+  --radius-card: 12px; /* 패널 · 안내 박스 · 큰 버튼 */
+  --radius-sheet: 24px; /* 바텀시트 윗모서리 */
+
+  /* ── Typography: 글자 크기 단계 ──────────────────────────────────
+   * 화면이 실제 쓰는 크기만 단계로 둔다. 행간은 지정하지 않는다(부모 행간 상속).
+   * Tailwind 기본(text-xs~2xl)은 행간까지 바꾸므로 Dayro 화면은 아래 단계를 쓴다(필요하면 leading-* 함께). */
+  --text-micro: 0.625rem; /* 10px 보조 숫자 · 뱃지 */
+  --text-caption: 0.6875rem; /* 11px 캡션 · 메타 */
+  --text-meta: 0.75rem; /* 12px 보조 정보 */
+  --text-label: 0.8125rem; /* 13px 라벨 · 설명 */
+  --text-control: 0.875rem; /* 14px 입력칸 · 작은 버튼 */
+  --text-body: 0.9375rem; /* 15px 본문 · 항목 제목 */
+  --text-body-lg: 1rem; /* 16px 시트 제목 · 폼 라벨 */
+  --text-title-sm: 1.0625rem; /* 17px 작은 제목 */
+  --text-title: 1.125rem; /* 18px 화면 제목(내비 바) */
+  --text-title-lg: 1.25rem; /* 20px 큰 제목 */
+  --text-headline: 1.375rem; /* 22px 큰 숫자 · 아바타 이니셜 · 시작 화면 문구 */
+  --text-display: 1.5rem; /* 24px 온보딩 제목 */
+
+  /* ── Elevation: 그림자 ───────────────────────────────────────── */
+  --shadow-popover: 0 8px 24px rgb(0 0 0 / 0.06); /* 드롭다운 목록 */
+}
+
+/*
+ * 모션 · 레이어 토큰. Tailwind 유틸을 만들 필요가 없어 :root 변수로 둔다.
+ * Tailwind 에서는 z-(--z-modal) · duration-(--duration-base) 처럼 쓴다.
+ */
+:root {
+  --duration-press: 0.12s; /* 누름 피드백 */
+  --duration-fast: 0.15s; /* 색 · 테두리 전환 */
+  --duration-base: 0.2s; /* 열고 닫기 · 회전 */
+  --duration-slow: 0.3s; /* 시트 · 패널 이동 */
+  --ease-sheet: cubic-bezier(0.32, 0.72, 0, 1); /* 바텀시트 올라옴 */
+  --duration-enter: 0.18s; /* 칩 등장 */
+  --duration-reveal: 0.25s; /* 아코디언 펼침 */
+  --duration-pop: 0.36s; /* 튀어오름 강조 */
+  --ease-pop: cubic-bezier(0.34, 1.56, 0.64, 1); /* 튀어오름 강조 */
+  --duration-loop: 2.4s; /* 반복 움직임(둥실 · 반짝) 한 바퀴 */
+  --delay-stagger: 0.08s; /* 차례로 등장할 때 항목 간격 */
+
+  --z-raised: 2; /* 같은 목록 안에서 위로 (끄는 카드) */
+  --z-dropdown: 30; /* 선택 목록 */
+  --z-sheet: 40; /* 바텀시트 */
+  --z-modal: 50; /* 확인 모달 · 사이드메뉴 */
+  --z-toast: 60; /* 토스트 (모달 위) */
+}
+
+/* 공용 포커스 링. 키보드 포커스일 때만 보인다(issue #358). */
+@utility focus-ring {
+  @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40;
+}

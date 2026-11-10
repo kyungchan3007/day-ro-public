@@ -1,0 +1,7 @@
+/* 코스 지도 슬라이스 토큰 (issue #381). app/globals.css 만 import 한다. */
+@theme {
+  --shadow-card: 0 2px 8px rgba(180, 190, 201, 0.4); /* 장소 카드 */
+  --shadow-card-active: 0 6px 16px rgba(120, 0, 233, 0.22); /* 끌어 옮기는 카드 */
+  --shadow-badge: 0 2.4px 1.2px rgba(171, 190, 209, 0.4); /* 번호 뱃지 */
+  --shadow-marker: 0 2px 4px rgba(0, 0, 0, 0.3); /* 지도 마커 */
+}

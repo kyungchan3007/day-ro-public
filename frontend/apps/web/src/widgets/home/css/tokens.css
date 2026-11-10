@@ -1,0 +1,4 @@
+/* 홈 슬라이스 토큰 (issue #381). app/globals.css 만 import 한다. */
+@theme {
+  --text-hero: 1.625rem; /* 26px 홈 제목 */
+}

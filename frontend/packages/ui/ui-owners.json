@@ -1,0 +1,16 @@
+{
+  "$comment": "@dayro/ui(L1) 검사 예외 원본 (issue #381). 경로는 src 기준.",
+  "tokenGuard": {
+    "allowlist": {
+      "styles/theme.css": {
+        "reason": "범용 토큰 정의 원본"
+      },
+      "logo/Logo.tsx": {
+        "reason": "로고 SVG 원본 색",
+        "rules": [
+          "raw-hex-color"
+        ]
+      }
+    }
+  }
+}

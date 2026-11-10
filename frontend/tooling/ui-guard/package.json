@@ -1,0 +1,19 @@
+{
+  "name": "@dayro/ui-guard",
+  "version": "0.0.0",
+  "private": true,
+  "description": "UI 3층 경계 검사(토큰 우회 · 토큰 소유권 · import 경계 · 범용 독립성). 앱 · 패키지 런타임과 분리된 repo tooling (issue #381).",
+  "scripts": {
+    "test:unit": "vitest run",
+    "check:boundaries": "vitest run src/boundaries.test.ts",
+    "check:built-css": "vitest run src/built-css.test.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@tailwindcss/node": "4.3.3",
+    "@tailwindcss/oxide": "4.3.3",
+    "@types/node": "^20",
+    "typescript": "^5",
+    "vitest": "4.1.12"
+  }
+}

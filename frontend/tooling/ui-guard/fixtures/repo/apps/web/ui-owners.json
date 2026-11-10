@@ -1,0 +1,4 @@
+{
+  "routeGroups": { "course": ["features/saved"], "entry": [] },
+  "unownedSlices": ["features/auth"]
+}

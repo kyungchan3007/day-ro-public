@@ -1,0 +1,4 @@
+/* 실패 fixture: 따옴표 없는 url() · 문자열 속 주석 기호 뒤 import */
+@import url(../../../admin/src/app/globals.css);
+a { content: '/*'; }
+@import "dayro-admin";

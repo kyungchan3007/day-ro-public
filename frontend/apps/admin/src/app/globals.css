@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+/* 범용 토큰(L1) — web 과 같은 원본. 값을 이 파일에 복사하지 않는다(issue #381). */
+@import "@dayro/ui/theme.css";
+
+/* 범용 패키지(@dayro/ui) 컴포넌트의 class 도 이 앱 CSS 로 생성한다. */
+@source "../../../../packages/ui/src";
+
+/*
+ * 어드민 앱 토큰(L2)이 필요해지면 여기에 @theme 로 두고 tooling/ui-guard 카탈로그에 함께 올린다.
+ * 경계: .agents/intent/sdd/2026-11-08-ui-package-layers.md
+ */
+
+body {
+  background: var(--color-surface-subtle);
+  color: var(--color-text);
+}

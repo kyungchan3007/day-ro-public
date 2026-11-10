@@ -1,0 +1,8 @@
+{
+  "$comment": "admin UI 소유권 · 검사 예외 원본 (issue #381). 런타임 코드는 import 하지 않고 tooling/ui-guard · eslint 설정만 읽는다. 경로는 src 기준.",
+  "tokenGuard": {
+    "allowlist": {
+      "app/globals.css": { "reason": "admin 전역 규칙 원본(토큰은 @dayro/ui/theme.css)" }
+    }
+  }
+}

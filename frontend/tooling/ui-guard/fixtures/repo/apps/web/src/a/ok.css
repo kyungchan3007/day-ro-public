@@ -1,0 +1,3 @@
+/* 성공 fixture: 문자열 속 at-rule 예시는 import 가 아니다 */
+a::before { content: '@import "dayro-admin";'; }
+@import "@dayro/ui/theme.css";

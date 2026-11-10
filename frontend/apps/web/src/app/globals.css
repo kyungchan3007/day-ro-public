@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+@import "@dayro/ui/theme.css";
+
+/* 라우트 묶음 · 슬라이스 소유 토큰. 조립은 이 파일에서만 한다(issue #381). */
+@import "../groups/course/tokens.css";
+@import "../groups/entry/tokens.css";
+@import "../features/course-map/css/tokens.css";
+@import "../features/situation/css/tokens.css";
+@import "../features/onboarding/css/tokens.css";
+@import "../widgets/home/css/tokens.css";
+
+/* 범용 패키지(@dayro/ui) 컴포넌트의 class 도 이 앱 CSS 로 생성한다. */
+@source "../../../../packages/ui/src";
+
+/*
+ * web 앱 토큰 — 범용 토큰(@dayro/ui/theme.css) 위에 web 만 쓰는 값 (issue #381)
+ * 범용 · 앱 · 라우트 묶음 경계: .agents/intent/sdd/2026-11-08-ui-package-layers.md
+ */
+@theme {
+  /* ── 앱 공통: 레이아웃 · 글자 ─────────────────────────────────────
+   * 앱 컬럼 폭(max-w-app): 모바일은 화면을 꽉 채우고, 넓은 화면에서는 이 폭에서 멈춘다. @media 조건에는 변수를 못 써서 640px 를 그대로 쓴다. */
+  --container-app: 640px;
+  --color-frame: var(--color-neutral-50); /* AppShell 좌우 여백(gutter) = 미색 */
+  --color-text-subtle: #767676; /* 온보딩 · 시작 화면 설명 · 건너뛰기 (시안 #8a8a8a → 흰 바탕 대비 4.5:1 맞춤) */
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #111111;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), system-ui, "Apple SD Gothic Neo",
+    "Malgun Gothic", sans-serif;
+}
+
+/*
+ * 아이폰 · 아이패드(iOS WebKit) 전용: 글자 16px 미만 입력칸에 포커스하면 사파리가 화면을 확대하고
+ * 입력이 끝나도 확대된 채로 남는다 → 다음 화면(예: 코스 생성 로딩)까지 확대돼 보였다(issue #214).
+ * -webkit-touch-callout 은 iOS WebKit 만 지원하므로, 다른 기기의 입력칸 디자인은 그대로 둔다.
+ */
+@supports (-webkit-touch-callout: none) {
+  input,
+  textarea,
+  select {
+    font-size: max(16px, 1em) !important;
+  }
+}
+
+/* 비회원 `/`: 시작 화면 · 홈 중 이번 탭 상태로 하나만 (issue #244, features/onboarding/model/guest-visit) */
+.guest-entry-start,
+.guest-entry-home {
+  display: contents;
+}
+html[data-guest-visit="on"] .guest-entry-start,
+html:not([data-guest-visit="on"]) .guest-entry-home {
+  display: none;
+}

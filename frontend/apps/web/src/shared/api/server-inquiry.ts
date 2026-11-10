@@ -1,0 +1,62 @@
+import "server-only";
+
+import { NextRequest, NextResponse } from "next/server";
+
+import { bffErrorResponse, bffFailure } from "./backend-error";
+import { requestBackend } from "./backend-request";
+import { readClientIp } from "./client-ip";
+import {
+  inquiryCreateRequestSchema,
+  inquiryCreateResponseSchema,
+  type InquiryCreateRequest,
+  type InquiryCreateResponse,
+} from "./openapi/dayro.openapi";
+import { readAccessTokenCookie } from "./server-auth";
+import { BFF_MESSAGES } from "./bff-messages";
+
+/**
+ * 외부 백엔드 `POST /api/inquiries` 호출 (BE PR#218, issue #224).
+ * - 로그인 상태면 access token 을 실어 회원 문의로 저장되게 한다(비회원 허용).
+ * - 접속 IP 를 X-Forwarded-For 로 넘겨 백엔드 IP당 시간당 5건 제한이 사용자 기준으로 걸리게 한다.
+ */
+export async function createBackendInquiry(
+  payload: InquiryCreateRequest,
+  options: { accessToken?: string | null; clientIp?: string | null },
+): Promise<InquiryCreateResponse> {
+  return requestBackend(
+    "/api/inquiries",
+    {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        ...(options.accessToken ? { Authorization: `Bearer ${options.accessToken}` } : {}),
+        ...(options.clientIp ? { "X-Forwarded-For": options.clientIp } : {}),
+      },
+      body: JSON.stringify(payload),
+    },
+    (json) => inquiryCreateResponseSchema.parse(json),
+    BFF_MESSAGES.inquiry.sendFailed,
+  );
+}
+
+/**
+ * 문의 BFF 요청 처리: 입력 검증(400) → 백엔드 전달 → 응답 계약 검증.
+ * 입력 검증과 백엔드 호출을 분리해, 백엔드 응답 계약 불일치를 입력 오류로 내보내지 않는다(.agents/guides/bff.md).
+ */
+export async function submitInquiryFromRequest(request: NextRequest) {
+  const parsed = inquiryCreateRequestSchema.safeParse(await request.json().catch(() => null));
+  if (!parsed.success) {
+    return bffFailure(BFF_MESSAGES.inquiry.invalidRequest, 400);
+  }
+
+  try {
+    const result = await createBackendInquiry(parsed.data, {
+      accessToken: readAccessTokenCookie(request),
+      clientIp: readClientIp(request.headers),
+    });
+    return NextResponse.json(result);
+  } catch (error) {
+    return bffErrorResponse(error, BFF_MESSAGES.inquiry.sendFailed);
+  }
+}

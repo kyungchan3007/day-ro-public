@@ -1,0 +1,31 @@
+import {
+  situationInputRequestSchema,
+  type SituationInputRequest,
+} from "../../../shared/api/openapi/dayro.openapi";
+import { formatApiTime } from "../../../shared/lib/time";
+import { resolvePlaceCount } from "./place-count";
+import type { PurposeChoice, SituationAnswers } from "./types";
+
+const PURPOSE_TO_API_VALUE: Record<PurposeChoice, SituationInputRequest["purpose"]> = {
+  date: "CASUAL_DATE",
+  blind: "BLIND_DATE",
+  friends: "FRIENDS",
+  anniversary: "ANNIVERSARY",
+};
+
+export function buildSituationRequest(
+  answers: SituationAnswers,
+): SituationInputRequest {
+  if (!answers.time || !answers.region || !answers.purpose) {
+    throw new Error("상황 입력이 아직 완료되지 않았습니다.");
+  }
+
+  return situationInputRequestSchema.parse({
+    startTime: formatApiTime(answers.time.start),
+    endTime: formatApiTime(answers.time.end),
+    districtId: answers.region.districtId,
+    purpose: PURPOSE_TO_API_VALUE[answers.purpose],
+    // 값이 없는 예전 스냅샷 · 로그인 복귀도 스테퍼에 보이는 값(기본 3곳)과 같게 보낸다 (issue #271)
+    placeCount: resolvePlaceCount(answers.placeCount),
+  });
+}
