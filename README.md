@@ -208,3 +208,18 @@ frontend
 └── tooling
     └── ui-guard     # UI 경계 · 토큰 소유권 검사
 ```
+
+---
+
+## 🧰 기술 스택
+
+| 영역 | 기술 |
+| --- | --- |
+| 모노레포 | Turborepo · npm workspaces |
+| 앱 | Next.js 16 (App Router) · React 19 · TypeScript 5 |
+| 스타일 | Tailwind CSS v4 · CSS Modules · 디자인 토큰 패키지(@dayro/ui) |
+| API | BFF(Route Handler) · zod/mini · MSW |
+| 지도 · 인터랙션 | Kakao Maps SDK · dnd-kit |
+| 배포 | OpenNext · Cloudflare Workers |
+| 검증 | Vitest · Playwright · Storybook |
+| AI 에이전트 | Claude Code · Codex |
